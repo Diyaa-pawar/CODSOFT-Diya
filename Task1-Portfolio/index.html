@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diya Pawar Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+            background-color: black;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navBar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            padding:20px 60px;
+            z-index:1000;
+            height: 68px;
+            background:transparent;
+            transition:0.4s ease;
+        }
+
+        .logo h2{
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        /* Hidden Checkbox & Menu Icon for Mobile */
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-icon {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu a{
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .menu a:hover{
+            color: #B8D05A;
+            transform: scale(1.1);
+        }
+
+        /* After scrolling navbar */
+        .navBar.active{
+            background: #2d2d2d;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .navBar.active .logo h2,.navBar.active .menu a {
+            color: white;
+        }
+        
+        .navBar.active .menu a:hover{
+            color: #B8D05A;
+        }
+
+    
+        /* Hero Section */
+        .headBar{
+            height:100vh;
+            background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url("imagee.jpg");
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:0 20px;
+        }
+
+        .headBar h3{
+            color:white;
+            font-size:30px;
+            font-weight:300;
+        }
+
+        .headBar h1{
+            color:white;
+            font-size:80px;
+            letter-spacing:2px;
+            margin:15px 0;
+            word-break:break-word;
+        }
+
+        .headBar h2{
+            color:#B8D05A;
+            margin-bottom:30px;
+            font-size:24px;
+        }
+
+        .hero-buttons{
+            display:flex;
+            gap:15px;
+            justify-content:center;
+            margin-top:20px;
+        }
+
+        .btn{
+            padding:15px 30px;
+            background:#B8D05A;
+            color:black;
+            border:none;
+            border-radius:5px;
+            font-weight:600;
+            cursor:pointer;
+            transition:all 0.3s ease;
+        }
+
+        .btn:hover{
+            background:white;
+            transform:translateY(-3px);
+        }
+
+        /* About Section */
+        .About{
+            padding: 80px 10%;
+            text-align: center;
+        }        
+
+        .About h3{
+            color: white;
+            font-size: 35px;
+            margin-bottom: 30px;
+            font-weight: 200;
+        }
+
+        .About p{
+            color: white;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .resume-container{
+            display:flex;
+            justify-content:center;
+            gap:40px;
+            margin-top:50px;
+            flex-wrap: wrap;
+        }
+
+        .column{
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .column h4{
+            font-size:22px ;
+            font-weight: 200;
+            color:#B8D05A ;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .card{
+            background:#2d2d2d;
+            width: 100%;
+            min-height:400px;
+            padding:40px 35px;
+            border-radius:5px;
+            transition:0.3s ease;
+            text-align: left;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+        }
+
+        .date{
+            color:white;
+            font-size:11px;
+            font-weight:400;
+            margin-bottom:35px;
+        }
+
+        .date i{
+            margin-right:10px;
+        }
+
+        .card h3{
+            color:#B8D05A;
+            font-size:18px;
+            font-weight:400;
+            margin-bottom:25px;
+        }
+
+        .card p{
+            color:#bdbdbd;
+            font-size:15px;
+            line-height:1.8;
+        }
+
+        .card h5{
+            margin-top:35px;
+            color:#9e9e9e;
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills{
+            padding:100px 10%;
+        }
+
+        .skills-container{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:30px 50px;
+            margin-top:50px;
+        }
+
+        .skills h2{
+            text-align:center;
+            color:white;
+            font-size:35px;
+            margin-bottom:50px;
+            font-weight :200;
+        }
+
+        .skill{
+            margin-bottom:10px;
+        }
+
+        .skill-info{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:10px;
+        }
+
+        .skill-info span{
+            color:white;
+            font-size:15px;
+            font-weight: 100;
+        }
+
+        .progress-bar{
+            width:100%;
+            height:12px;
+            background:#2d2d2d;
+            border-radius:10px;
+            overflow:hidden;
+        }
+
+        .progress{
+            height:100%;
+            background:#B8D05A;
+            border-radius:10px;
+            transition:1s ease;
+        }
+
+        /* Individual Skill Widths */
+        .html{
+            width:90%; 
+        }
+        .css{
+            width:80%; 
+        }
+        .sql{
+            width:70%;
+        }
+        .java{
+            width:80%;
+        }
+        .javascript{
+            width:70%;
+        }
+        .python{
+            width:90%;
+        }
+        .github{
+            width:70%;
+        }
+
+        /* Project Section */
+        .projects{
+            padding:100px 10%;
+        }
+
+        .projects h2{
+            color: white;
+            font-size: 35px;
+            margin-bottom: 30px;
+            font-weight: 200;
+            text-align: center;
+        }
+
+        .projects-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .project-card{
+            flex:1 1 300px;
+            max-width:450px;
+            background:#2d2d2d;
+            padding:25px;
+            border-radius:10px;
+            transition: all 0.3s ease;
+        }
+            
+        .project-card:hover{
+            transform:translateY(-5px);
+        }
+
+        .project-card img{
+            width:100%;
+            height: 200px;
+            object-fit:cover;
+            border-radius: 5px;
+        }
+
+        .project-card h3{
+            color:white;
+            padding:20px 0 10px;
+        }
+
+        .project-card p{
+            color:#bdbdbd;
+            padding:0 0 10px;
+            line-height:1.7;
+        }
+
+        .project-card button{
+            margin-top: 10px;
+            padding:10px 0;
+            border:none;
+            background:transparent;
+            color:#B8D05A;
+            cursor:pointer;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .project-card button i{
+            margin-left: 5px;
+            color:#B8D05A;
+        }
+
+        /* Contact Us Section */
+        .contactUs {
+            background: black;
+            padding: 80px 10%;
+        }
+
+        .contactUs h2{
+            color: white;
+            font-size: 35px;
+            margin-bottom: 50px;
+            font-weight: 200;
+            text-align: center;
+        }
+
+        .Outer-Container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        /* Headings */
+        .Heading-card h4 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: white;
+            border-left: 4px solid #B8D05A;
+            padding-left: 10px;
+            font-weight: 400;
+        }
+
+        /* Form Section */
+        .Get-In-Touch {
+            flex: 1 1 45%;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .Get-In-Touch form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .Get-In-Touch label {
+            color: #bdbdbd;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .Get-In-Touch input,.Get-In-Touch textarea {
+            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color:#2d2d2d;
+            border: 1px solid #3d3d3d;
+            color: white;
+            width: 100%;
+        }
+
+        .Get-In-Touch textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .Get-In-Touch button {
+            background:#B8D05A;
+            color: black;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .Get-In-Touch button:hover {
+            background: white;
+            color:black;
+        }
+
+        /* Contact Details Section */
+        .ContactDetails {
+            flex: 1 1 45%;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .ContactDetails h6 {
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #B8D05A;
+            letter-spacing: 1px;
+        }
+
+        .ContactDetails p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #bdbdbd;
+        }
+
+        .ContactDetails a {
+            color:#bdbdbd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .ContactDetails a:hover {
+            color:#B8D05A;
+        }
+
+        /* Footer Section */
+        .footer{
+            background:#111;
+            padding:40px 10%;
+            text-align:center;
+            border-top:1px solid #2d2d2d;
+        }
+
+        .social-links{
+            margin-bottom:20px;
+        }
+
+        .social-links a{
+            color:#B8D05A;
+            font-size:24px;
+            margin:0 15px;
+            display: inline-block;
+            transition:0.3s ease;
+        }
+
+        .social-links a:hover{
+            color:white;
+            transform:translateY(-5px);
+        }
+
+        .footer p{
+            color:#bdbdbd;
+            font-size:14px;
+        }
+
+
+        @media (max-width: 992px) {
+            .navBar {
+                padding: 20px 30px;
+            }
+            .headBar h1 {
+                font-size: 60px;
+            }
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            
+            .menu-icon {
+                display: block;
+            }
+
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                background: #2d2d2d;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+            }
+
+            .menu a {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+                font-size: 18px;
+            }
+
+            /* Display menu when hidden checkbox is checked */
+            #menu-toggle:checked ~ .menu {
+                display: flex;
+            }
+
+            .headBar h1 {
+                font-size: 45px;
+            }
+
+            .headBar h3 {
+                font-size: 22px;
+            }
+
+            .About, .skills, .projects, .contactUs {
+                padding: 60px 5%;
+            }
+
+            .Outer-Container {
+                flex-direction: column;
+            }
+
+            .column h4 {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .headBar h1 {
+                font-size: 36px;
+            }
+            .card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navBar">
+        <div class="logo">
+            <h2>Diya Pawar.</h2>
+        </div>
+
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">
+            <i class="fa-solid fa-bars"></i>
+        </label>
+
+        <div class="menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contactus">Contact</a>
+        </div>
+    </nav>
+    
+    <section class="headBar" id="home">
+        <h3>Hello, I'm</h3>
+        <h1>DIYA PAWAR</h1>
+        <h2>Budding Computer Expert</h2>
+        <<div class="hero-buttons">
+
+    <a href="#projects">
+        <button class="btn">View My Work</button>
+    </a>
+
+    <a href="resume/diya_resume.pdf" download>
+        <button class="btn">Download Resume</button>
+    </a>
+
+</div>
+</a>
+    </section>
+
+    <section class="About" id="about">
+        <h3>ABOUT ME</h3>
+        
+        <div class="resume-container">
+            <div class="column">
+                <h4>
+                    EDUCATION
+                    <i class="fa-solid fa-angles-right"></i>
+                </h4>
+                <div class="card">
+                    <div class="date">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>2023 - 2026</span>
+                    </div>
+
+                    <h3>Diploma in Computer Technology</h3>
+
+                    <p>
+                        Studying programming, web development,
+                        database management, networking and
+                        software engineering while building
+                        practical projects.
+                    </p>
+
+                    <h5>
+                        Government Polytechnic Nashik
+                    </h5>
+                </div>
+            </div>
+            
+            <div class="column">
+                <h4>
+                    EXPERIENCE
+                    <i class="fa-solid fa-angles-right"></i>
+                </h4>
+                <div class="card">
+                    <div class="date">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>5th Jan 2026 - 8th May 2026</span>
+                    </div>
+
+                    <h3>Intern as a Full Stack Java Developer</h3>
+
+                    <p>
+                        Gained practical excellence with the working of 
+                        real world projects. Understood the concept of API 
+                        Integration with their actual working.
+                    </p>
+
+                    <h5>
+                        Sumago Infotech Pvt Ltd.
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <h2>SKILLS</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <div class="skill-info">
+                    <span>HTML</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress html"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>CSS</span>
+                    <span>80%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress css"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>SQL</span>
+                    <span>70%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress sql"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>JAVA</span>
+                    <span>80%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress java"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>JAVASCRIPT</span>
+                    <span>70%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress javascript"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>PYTHON</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress python"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>GITHUB</span>
+                    <span>70%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress github"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2>PROJECTS</h2>
+
+        <div class="projects-container">
+            <div class="project-card">
+                <img src="project1.png" alt="Portfolio Website">
+                <h3>Portfolio Website</h3>
+                <p>
+                    Designed and developed a responsive portfolio website using HTML and CSS.
+                </p>
+                <button>View Project <i class="fa-solid fa-right-from-bracket"></i></button>
+            </div>
+
+            <div class="project-card">
+                <img src="project2.png" alt="Student-Teacher Management">
+                <h3>Student-Teacher Management</h3>
+                <p>
+                    Created a centralized platform for student and teacher management.
+                </p>
+                <button>View Project <i class="fa-solid fa-right-from-bracket"></i></button>
+            </div>
+
+            <div class="project-card">
+                <img src="projectk.jpeg" alt="KumbhPath-A Smart Guide">
+                <h3>KumbhPath-A Smart Guide</h3>
+                <p>
+                    Developed a digital guide for Kumbh Mela visitors to enhance the pilgrimage experience.
+                </p>
+                <button>View Project <i class="fa-solid fa-right-from-bracket"></i></button>
+            </div>
+
+            <div class="project-card">
+                <img src="projectS.png" alt="Student-Teacher Management">
+                <h3>SweetSlice – Cake Shop Landing Page</h3>
+                <p>
+                    A simple and attractive landing page for a cake shop.
+                </p>
+                <button>View Project <i class="fa-solid fa-right-from-bracket"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="contactUs" id="contactus">
+        <h2>CONTACT US</h2>
+        <div class="Outer-Container">
+            <div class="Get-In-Touch">
+                <div class="Heading-card">
+                    <h4>Get In Touch</h4>
+                </div>
+              
+                <form action="#" method="post">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    
+                    <label for="phone">Your Phone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone" required>
+                    
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+
+            <div class="ContactDetails">
+                <div class="Heading-card">
+                    <h4>My Contact Details</h4>
+                </div>
+                <h6>EMAIL</h6>
+                <p><a href="mailto:pawardiya14@gmail.com">pawardiya14@gmail.com</a></p>
+                <h6>PHONE</h6>
+                <p><a href="tel:+91XXXXXXXXXX">+91XXXXXXXXXX</a></p>
+                <h6>ADDRESS</h6>
+                <p>At Post Malegoan, Nashik, Maharastra</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p>© 2026 Diya Pawar. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const navbar = document.querySelector(".navBar");
+        const menuToggle = document.getElementById("menu-toggle");
+        const menuLinks = document.querySelectorAll(".menu a");
+
+        // Changes navbar color on scroll
+        window.addEventListener("scroll", () => {
+            if(window.scrollY > 50){
+                navbar.classList.add("active");
+            } else {
+                if (!menuToggle.checked) {
+                    navbar.classList.remove("active");
+                }
+            }
+        });
+
+        // Background handling when dropdown menu opens on mobile
+        menuToggle.addEventListener("change", () => {
+            if (menuToggle.checked) {
+                navbar.classList.add("active");
+            } else if (window.scrollY <= 50) {
+                navbar.classList.remove("active");
+            }
+        });
+
+        // Automatically collapses the mobile navigation drawer when any link is tapped
+        menuLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                menuToggle.checked = false;
+                if(window.scrollY <= 50) {
+                    navbar.classList.remove("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
